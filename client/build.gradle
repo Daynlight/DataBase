@@ -1,0 +1,34 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+}
+
+application {
+  mainClass = 'com.example.ApplicationMain'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.openjfx:javafx-base:20.0.2:linux'
+  implementation 'org.openjfx:javafx-graphics:20.0.2:linux'
+  implementation 'org.openjfx:javafx-controls:20.0.2:linux'
+}
+
+run {
+  jvmArgs = [
+    '--module-path', '/usr/share/openjfx/lib',
+    '--add-modules', 'javafx.controls,javafx.graphics,javafx.base'
+  ]
+}
